@@ -1,0 +1,1 @@
+ just check this how beautifully its implemented i want similar without downloading it use shadcn : https://magicui.design/docs/components/lens 
