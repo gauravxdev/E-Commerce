@@ -28,9 +28,11 @@ export function generateSlug(name: string): string {
 }
 
 export function getCategories(): Category[] {
-  if (typeof window === "undefined") return [];
+  if (typeof window === "undefined") return defaultCategories;
   const data = localStorage.getItem(STORAGE_KEY);
-  return data ? JSON.parse(data) : [];
+  if (data) return JSON.parse(data);
+  saveCategories(defaultCategories);
+  return defaultCategories;
 }
 
 export function saveCategories(categories: Category[]): void {
@@ -71,7 +73,9 @@ export function updateCategory(
 
 export function deleteCategory(id: string): boolean {
   const categories = getCategories();
-  const filtered = categories.filter((c) => c.id !== id);
+  const filtered = categories.filter(
+    (c) => c.id !== id && c.parentId !== id
+  );
   if (filtered.length === categories.length) return false;
   saveCategories(filtered);
   return true;
@@ -79,7 +83,9 @@ export function deleteCategory(id: string): boolean {
 
 export function deleteCategories(ids: string[]): number {
   const categories = getCategories();
-  const filtered = categories.filter((c) => !ids.includes(c.id));
+  const filtered = categories.filter(
+    (c) => !ids.includes(c.id) && !ids.includes(c.parentId as string)
+  );
   const deletedCount = categories.length - filtered.length;
   saveCategories(filtered);
   return deletedCount;
@@ -94,6 +100,7 @@ export function duplicateCategory(id: string): Category | null {
     id: generateId(),
     name: `${original.name} (Copy)`,
     slug: `${original.slug}-copy`,
+    sortOrder: categories.length,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };
@@ -104,12 +111,12 @@ export function duplicateCategory(id: string): Category | null {
 
 export function reorderCategories(orderedIds: string[]): void {
   const categories = getCategories();
-  const reordered: Category[] = [];
-  orderedIds.forEach((id, index) => {
-    const cat = categories.find((c) => c.id === id);
-    if (cat) {
-      reordered.push({ ...cat, sortOrder: index });
+  const idSet = new Set(orderedIds);
+  const reordered: Category[] = categories.map((cat) => {
+    if (idSet.has(cat.id)) {
+      return { ...cat, sortOrder: orderedIds.indexOf(cat.id) };
     }
+    return cat;
   });
   saveCategories(reordered);
 }
@@ -147,12 +154,21 @@ export function toggleCategoriesActive(
   return updatedCount;
 }
 
+export function toggleCategoryActive(
+  id: string,
+  isActive: boolean
+): Category | null {
+  return updateCategory(id, { isActive });
+}
+
 export function getParentCategories(): Category[] {
   return getCategories().filter((c) => c.parentId === null);
 }
 
 export function getChildCategories(parentId: string): Category[] {
-  return getCategories().filter((c) => c.parentId === parentId);
+  return getCategories()
+    .filter((c) => c.parentId === parentId)
+    .sort((a, b) => a.sortOrder - b.sortOrder);
 }
 
 export function getCategoryTree(): Category[] {
