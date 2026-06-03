@@ -15,52 +15,67 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { LayoutDashboardIcon, ListIcon, ChartBarIcon, FolderIcon, UsersIcon, CameraIcon, FileTextIcon, Settings2Icon, CircleHelpIcon, SearchIcon, DatabaseIcon, FileChartColumnIcon, FileIcon, CommandIcon } from "lucide-react"
+import { LayoutDashboardIcon, ListIcon, ChartBarIcon, FolderIcon, UsersIcon, CameraIcon, FileTextIcon, Settings2Icon, CircleHelpIcon, SearchIcon, DatabaseIcon, FileChartColumnIcon, FileIcon, CommandIcon, FolderTreeIcon } from "lucide-react"
 
 const data = {
   user: {
     name: "shadcn",
     email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    avatar: "/avatars/shadcn.svg",
   },
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/admin",
       icon: (
         <LayoutDashboardIcon
         />
       ),
     },
     {
-      title: "Lifecycle",
-      url: "#",
-      icon: (
-        <ListIcon
-        />
-      ),
-    },
-    {
-      title: "Analytics",
-      url: "#",
-      icon: (
-        <ChartBarIcon
-        />
-      ),
-    },
-    {
-      title: "Projects",
-      url: "#",
+      title: "Products",
+      url: "/admin/products",
       icon: (
         <FolderIcon
         />
       ),
     },
     {
-      title: "Team",
-      url: "#",
+      title: "Add Product",
+      url: "/admin/products/add",
+      icon: (
+        <ListIcon
+        />
+      ),
+    },
+    {
+      title: "Categories",
+      url: "/admin/categories",
+      icon: (
+        <FolderTreeIcon />
+      ),
+    },
+    {
+      title: "Users",
+      url: "/admin/users",
       icon: (
         <UsersIcon
+        />
+      ),
+    },
+    {
+      title: "Orders",
+      url: "/admin/orders",
+      icon: (
+        <ListIcon
+        />
+      ),
+    },
+    {
+      title: "Reviews",
+      url: "/admin/reviews",
+      icon: (
+        <FileTextIcon
         />
       ),
     },
@@ -125,7 +140,7 @@ const data = {
   navSecondary: [
     {
       title: "Settings",
-      url: "#",
+      url: "/admin/settings",
       icon: (
         <Settings2Icon
         />
