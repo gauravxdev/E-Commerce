@@ -56,7 +56,7 @@ export default function ProductsPage() {
                     {productsData.map((product) => (
                       <TableRow key={product.id}>
                         <TableCell>
-                          <div className={`w-12 h-12 rounded-lg ${product.bgColor || 'bg-gray-100'} flex items-center justify-center p-1 relative`}>
+                          <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center p-1 relative">
                             {/* Fallback box if image path doesn't exist */}
                             <div className="w-8 h-8 rounded-full bg-brand-dark/10"></div>
                           </div>
