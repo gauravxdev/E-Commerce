@@ -38,6 +38,7 @@ import { useCategories } from "./category-provider";
 import type { Category } from "./category-data";
 
 interface CategoryTableProps {
+  categories: Category[];
   onEdit: (category: Category) => void;
   onDelete: (category: Category) => void;
   onDuplicate: (category: Category) => void;
@@ -45,12 +46,13 @@ interface CategoryTableProps {
 }
 
 export function CategoryTable({
+  categories,
   onEdit,
   onDelete,
   onDuplicate,
   onBulkAction,
 }: CategoryTableProps) {
-  const { categories, reorder } = useCategories();
+  const { reorder } = useCategories();
   const [sorting, setSorting] = useState<SortingState>([]);
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());

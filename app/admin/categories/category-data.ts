@@ -71,11 +71,20 @@ export function updateCategory(
   return categories[index];
 }
 
+function getDescendantIds(categories: Category[], parentId: string): string[] {
+  const children = categories.filter((c) => c.parentId === parentId);
+  const ids = children.map((c) => c.id);
+  return [
+    ...ids,
+    ...children.flatMap((child) => getDescendantIds(categories, child.id)),
+  ];
+}
+
 export function deleteCategory(id: string): boolean {
   const categories = getCategories();
-  const filtered = categories.filter(
-    (c) => c.id !== id && c.parentId !== id
-  );
+  const descendantIds = getDescendantIds(categories, id);
+  const idsToRemove = new Set([id, ...descendantIds]);
+  const filtered = categories.filter((c) => !idsToRemove.has(c.id));
   if (filtered.length === categories.length) return false;
   saveCategories(filtered);
   return true;
@@ -83,9 +92,9 @@ export function deleteCategory(id: string): boolean {
 
 export function deleteCategories(ids: string[]): number {
   const categories = getCategories();
-  const filtered = categories.filter(
-    (c) => !ids.includes(c.id) && !ids.includes(c.parentId as string)
-  );
+  const descendantIds = ids.flatMap((id) => getDescendantIds(categories, id));
+  const idsToRemove = new Set([...ids, ...descendantIds]);
+  const filtered = categories.filter((c) => !idsToRemove.has(c.id));
   const deletedCount = categories.length - filtered.length;
   saveCategories(filtered);
   return deletedCount;

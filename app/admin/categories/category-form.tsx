@@ -152,8 +152,10 @@ export function CategoryForm({
   }, [watchName, isEditing, setValue])
 
   const filteredParentCategories = useMemo(() => {
-    if (!category) return parentCategories
-    return parentCategories.filter((c) => c.id !== category.id)
+    if (!category) return parentCategories;
+    return parentCategories.filter(
+      (c) => c.id !== category.id && c.parentId !== category.id
+    );
   }, [category, parentCategories])
 
   return (

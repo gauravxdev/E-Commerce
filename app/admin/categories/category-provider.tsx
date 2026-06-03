@@ -5,6 +5,7 @@ import {
   useContext,
   useState,
   useCallback,
+  useMemo,
   type ReactNode,
 } from "react";
 import {
@@ -130,22 +131,37 @@ export function CategoryProvider({ children }: { children: ReactNode }) {
     return getChildCategories(parentId);
   }, []);
 
+  const value = useMemo(
+    () => ({
+      categories,
+      refresh,
+      add,
+      update,
+      remove,
+      removeMultiple,
+      duplicate,
+      reorder,
+      reparent,
+      toggleActive,
+      getChildren,
+    }),
+    [
+      categories,
+      refresh,
+      add,
+      update,
+      remove,
+      removeMultiple,
+      duplicate,
+      reorder,
+      reparent,
+      toggleActive,
+      getChildren,
+    ]
+  );
+
   return (
-    <CategoryContext.Provider
-      value={{
-        categories,
-        refresh,
-        add,
-        update,
-        remove,
-        removeMultiple,
-        duplicate,
-        reorder,
-        reparent,
-        toggleActive,
-        getChildren,
-      }}
-    >
+    <CategoryContext.Provider value={value}>
       {children}
     </CategoryContext.Provider>
   );

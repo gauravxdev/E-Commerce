@@ -104,6 +104,21 @@ function CategoriesContent() {
     setDrawerOpen(true)
   }, [])
 
+  const filteredCategories = categories.filter((c) => {
+    if (filter === "active" && !c.isActive) return false;
+    if (filter === "inactive" && c.isActive) return false;
+    if (search) {
+      const q = search.toLowerCase();
+      if (
+        !c.name.toLowerCase().includes(q) &&
+        !c.slug.toLowerCase().includes(q) &&
+        !c.description.toLowerCase().includes(q)
+      )
+        return false;
+    }
+    return true;
+  });
+
   return (
     <>
       <div className="flex items-center justify-between mb-2">
@@ -146,6 +161,7 @@ function CategoriesContent() {
       </div>
 
       <CategoryTable
+        categories={filteredCategories}
         onEdit={handleEdit}
         onDelete={handleDelete}
         onDuplicate={handleDuplicate}
