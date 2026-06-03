@@ -140,7 +140,6 @@ export function CategoryForm({
   })
 
   const watchName = watch("name")
-  const watchSlug = watch("slug")
   const watchIcon = watch("icon")
   const watchSeoTitle = watch("seoTitle") ?? ""
   const watchSeoDescription = watch("seoDescription") ?? ""

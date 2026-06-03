@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo, useCallback } from "react"
+import { useState, useCallback } from "react"
 import { toast } from "sonner"
 import { Plus, Search } from "lucide-react"
 
@@ -48,24 +48,6 @@ function CategoriesContent() {
   const [deleteTarget, setDeleteTarget] = useState<Category | null>(null)
   const [deleteAlertOpen, setDeleteAlertOpen] = useState(false)
   const [bulkDeleteIds, setBulkDeleteIds] = useState<string[]>([])
-
-  const filteredCategories = useMemo(() => {
-    let result = categories
-    if (filter === "active") {
-      result = result.filter((c) => c.isActive)
-    } else if (filter === "inactive") {
-      result = result.filter((c) => !c.isActive)
-    }
-    if (search) {
-      const q = search.toLowerCase()
-      result = result.filter(
-        (c) =>
-          c.name.toLowerCase().includes(q) ||
-          c.description.toLowerCase().includes(q)
-      )
-    }
-    return result
-  }, [categories, filter, search])
 
   const handleEdit = useCallback((category: Category) => {
     setEditingCategory(category)
