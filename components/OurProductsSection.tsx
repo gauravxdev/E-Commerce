@@ -1,8 +1,9 @@
 import React from 'react';
 import ProductCard from './ProductCard';
 import { ArrowUpRight } from 'lucide-react';
+import { SectionConfig } from './site-settings-provider';
 
-export default function OurProductsSection() {
+export default function OurProductsSection({ config }: { config?: SectionConfig }) {
   const products = [
     {
       id: 1,
@@ -120,10 +121,13 @@ export default function OurProductsSection() {
     }
   ];
 
+  const bgColor = config?.bgColor || "";
+  const textColor = config?.textColor || "text-gray-900";
+
   return (
-    <section className="w-full max-w-7xl mx-auto px-6 py-16 flex flex-col items-center border-t border-gray-100">
-      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-16 text-center max-w-md leading-tight">
-        Our Product
+    <section className={`w-full max-w-7xl mx-auto px-6 py-16 flex flex-col items-center border-t border-gray-100 ${bgColor}`}>
+      <h2 className={`text-4xl md:text-5xl font-bold ${textColor} mb-16 text-center max-w-md leading-tight`}>
+        {config?.title || "Our Product"}
       </h2>
       
       <div className="flex overflow-x-auto pb-8 -mx-6 px-6 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full mb-12 snap-x sm:snap-none hide-scrollbar">

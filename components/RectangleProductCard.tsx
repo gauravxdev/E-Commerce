@@ -57,6 +57,7 @@ export default function RectangleProductCard({
             src={imageSrc}
             alt={title}
             fill
+            sizes="200px"
             className="object-contain drop-shadow-lg"
           />
         </div>

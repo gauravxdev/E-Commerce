@@ -28,7 +28,7 @@ export function OrderDrawer({ open, onOpenChange, order }: OrderDrawerProps) {
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent className="w-[400px] sm:w-[540px] overflow-y-auto">
         <SheetHeader>
-          <SheetTitle className="flex items-center justify-between">
+          <SheetTitle className="flex items-center justify-between pr-8">
             <span>Order Details</span>
             <Badge
               variant={
@@ -42,7 +42,7 @@ export function OrderDrawer({ open, onOpenChange, order }: OrderDrawerProps) {
           </SheetTitle>
         </SheetHeader>
 
-        <div className="mt-6 space-y-6">
+        <div className="mt-6 px-4 pb-4 space-y-6">
           {/* Order Info */}
           <div>
             <h4 className="text-sm font-medium text-muted-foreground mb-2">Order Information</h4>

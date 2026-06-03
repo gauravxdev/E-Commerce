@@ -210,9 +210,9 @@ export function CategoryForm({
         <div className="space-y-2">
           <Label>Parent Category</Label>
           <Select
-            value={watch("parentId") ?? ""}
+            value={watch("parentId") ?? "none"}
             onValueChange={(value) =>
-              setValue("parentId", value === "" ? null : value, {
+              setValue("parentId", value === "none" ? null : value, {
                 shouldValidate: true,
               })
             }
@@ -221,7 +221,7 @@ export function CategoryForm({
               <SelectValue placeholder="None (top-level)" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">None (top-level)</SelectItem>
+              <SelectItem value="none">None (top-level)</SelectItem>
               {filteredParentCategories.map((cat) => (
                 <SelectItem key={cat.id} value={cat.id}>
                   {cat.name}

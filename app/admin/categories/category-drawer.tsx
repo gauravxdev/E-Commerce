@@ -6,6 +6,7 @@ import { toast } from "sonner"
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet"
@@ -61,6 +62,9 @@ export function CategoryDrawer({
       <SheetContent className="flex flex-col overflow-y-auto sm:max-w-md">
         <SheetHeader>
           <SheetTitle>{category ? "Edit Category" : "Add Category"}</SheetTitle>
+          <SheetDescription className="sr-only">
+            {category ? "Make changes to your category here." : "Add a new category here."}
+          </SheetDescription>
         </SheetHeader>
         <div className="flex-1 px-4 pb-4">
           <CategoryForm

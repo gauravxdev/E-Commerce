@@ -1,21 +1,25 @@
 import React from 'react';
 import { Compass, ArrowUpRight } from 'lucide-react';
+import { SectionConfig } from './site-settings-provider';
 
-export default function ApexOpticalSection() {
+export default function ApexOpticalSection({ config }: { config?: SectionConfig }) {
   const cards = [
     { id: 1, title: "Leading Optical Laboratory", description: "delivering tailored web development that lead to measurable results" },
     { id: 2, title: "Leading Optical Laboratory", description: "delivering tailored web development that lead to measurable results" },
     { id: 3, title: "Leading Optical Laboratory", description: "delivering tailored web development that lead to measurable results" },
   ];
 
+  const bgColor = config?.bgColor || "";
+  const textColor = config?.textColor || "text-gray-900";
+
   return (
-    <section className="w-full max-w-7xl mx-auto px-6 py-16">
+    <section className={`w-full max-w-7xl mx-auto px-6 py-16 ${bgColor}`}>
       <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-12 gap-6">
-        <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 tracking-tight max-w-md leading-tight">
-          Apex Optical Technology
+        <h2 className={`text-4xl md:text-5xl font-semibold ${textColor} tracking-tight max-w-md leading-tight`}>
+          {config?.title || "Apex Optical Technology"}
         </h2>
         <p className="text-gray-500 text-sm max-w-xs leading-relaxed">
-          Founded in 2014 our optical lab comprises experienced professional from leading multinational corporations
+          {config?.subtitle || "Founded in 2014 our optical lab comprises experienced professional from leading multinational corporations"}
         </p>
       </div>
 

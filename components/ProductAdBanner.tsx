@@ -11,6 +11,7 @@ export default function ProductAdBanner() {
           src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=1600&q=80"
           alt="Advertisement Banner"
           fill
+          sizes="100vw"
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
         

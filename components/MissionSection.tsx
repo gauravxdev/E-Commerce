@@ -54,6 +54,7 @@ export default function MissionSection() {
             src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=800&q=80"
             alt="Person experiencing VR"
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover"
           />
         </div>

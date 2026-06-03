@@ -49,6 +49,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                   src={item.imageSrc} 
                   alt={item.title}
                   fill
+                  sizes="96px"
                   className="object-contain"
                 />
               </div>

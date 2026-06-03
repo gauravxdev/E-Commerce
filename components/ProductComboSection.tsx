@@ -37,7 +37,7 @@ export default function ProductComboSection({ product }: { product: any }) {
           {/* Main Product Thumbnail */}
           <div className="flex flex-col items-center">
             <div className={`w-32 h-32 sm:w-40 sm:h-40 rounded-3xl ${product.bgColor || 'bg-gray-200'} p-4 flex items-center justify-center relative shadow-sm`}>
-              <Image src={product.imageSrc} alt={product.title} fill className="object-contain p-4" />
+              <Image src={product.imageSrc} alt={product.title} fill sizes="160px" className="object-contain p-4" />
             </div>
             <span className="mt-4 font-semibold text-gray-900 text-center text-sm">{product.title}</span>
           </div>
@@ -52,7 +52,7 @@ export default function ProductComboSection({ product }: { product: any }) {
             {freeItems.map((item) => (
               <div key={item.id} className="flex-1 bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex items-center gap-6 group hover:shadow-md transition-shadow">
                 <div className={`w-20 h-20 rounded-2xl ${item.bgColor} p-2 relative flex-shrink-0`}>
-                  <Image src={item.imageSrc} alt={item.title} fill className="object-cover rounded-xl" />
+                  <Image src={item.imageSrc} alt={item.title} fill sizes="80px" className="object-cover rounded-xl" />
                 </div>
                 <div className="flex flex-col">
                   <span className="px-2 py-1 bg-brand-accent/20 text-brand-dark text-[10px] font-bold uppercase tracking-wider rounded-md w-fit mb-2">Free Gift</span>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { ArrowUpRight, Quote, Globe } from 'lucide-react';
+import { SectionConfig } from './site-settings-provider';
 
 const FacebookIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -23,17 +24,21 @@ const InstagramIcon = () => (
   </svg>
 );
 
-export default function HeroSection() {
+export default function HeroSection({ config }: { config?: SectionConfig }) {
+  const bgColor = config?.bgColor || "bg-gradient-to-b from-[#a2d2ff] via-[#bde0fe] to-white";
+  const textColor = config?.textColor || "text-[#0b1b3d]";
+  const title = config?.title || "We believe in transforming ideas into digital experiences";
+
   return (
-    <section className="relative w-full pt-24 md:pt-40 pb-8 md:pb-16 px-6 overflow-hidden flex flex-col items-center bg-gradient-to-b from-[#a2d2ff] via-[#bde0fe] to-white">
+    <section className={`relative w-full pt-24 md:pt-40 pb-8 md:pb-16 px-6 overflow-hidden flex flex-col items-center ${bgColor}`}>
       {/* Large Typography Background */}
       <div className="absolute top-24 left-0 w-full overflow-hidden z-10 select-none pointer-events-none">
         <div className="animate-marquee">
-          <h1 className="text-[28vw] md:text-[12vw] font-black text-[#0b1b3d] leading-none tracking-tighter whitespace-nowrap pr-8">
-            AESTHETIC UNBOUND N
+          <h1 className={`text-[28vw] md:text-[12vw] font-black ${textColor} leading-none tracking-tighter whitespace-nowrap pr-8 uppercase`}>
+            {config?.title?.substring(0, 30) || "AESTHETIC UNBOUND N"}
           </h1>
-          <h1 className="text-[28vw] md:text-[12vw] font-black text-[#0b1b3d] leading-none tracking-tighter whitespace-nowrap pr-8">
-            AESTHETIC UNBOUND N
+          <h1 className={`text-[28vw] md:text-[12vw] font-black ${textColor} leading-none tracking-tighter whitespace-nowrap pr-8 uppercase`}>
+            {config?.title?.substring(0, 30) || "AESTHETIC UNBOUND N"}
           </h1>
         </div>
       </div>
@@ -46,6 +51,7 @@ export default function HeroSection() {
             src="/home.png"
             alt="Premium Headphones"
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-contain drop-shadow-2xl"
             priority
           />
@@ -72,6 +78,7 @@ export default function HeroSection() {
                   src="https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?w=400&q=80"
                   alt="Hands holding product"
                   fill
+                  sizes="144px"
                   className="object-cover"
                 />
               </div>

@@ -46,7 +46,7 @@ export default function ProductHero({ product }: { product: any }) {
         <div className="flex gap-4 overflow-x-auto pb-2">
           {[1, 2, 3, 4].map((i) => (
             <div key={i} className={`relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl ${product.bgColor || 'bg-gray-100'} flex-shrink-0 cursor-pointer border-2 ${i === 1 ? 'border-brand-dark' : 'border-transparent hover:border-gray-300'}`}>
-               <Image src={product.imageSrc} alt={`${product.title} view ${i}`} fill className="object-contain p-2" />
+               <Image src={product.imageSrc} alt={`${product.title} view ${i}`} fill sizes="96px" className="object-contain p-2" />
             </div>
           ))}
         </div>

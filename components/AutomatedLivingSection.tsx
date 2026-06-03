@@ -1,8 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
+import { SectionConfig } from './site-settings-provider';
 
-export default function AutomatedLivingSection() {
+export default function AutomatedLivingSection({ config }: { config?: SectionConfig }) {
   const features = [
     "wireless connectivity",
     "Automatic pairing",
@@ -11,19 +12,23 @@ export default function AutomatedLivingSection() {
     "Transparency Mode"
   ];
 
+  const bgColor = config?.bgColor || "";
+  const textColor = config?.textColor || "text-gray-900";
+
   return (
-    <section className="w-full max-w-7xl mx-auto px-6 py-24">
-      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-16 text-center max-w-3xl mx-auto leading-tight">
-        Effortless journey from to fully automated smart living
+    <section className={`w-full max-w-7xl mx-auto px-6 py-24 ${bgColor}`}>
+      <h2 className={`text-4xl md:text-5xl font-bold ${textColor} mb-16 text-center max-w-3xl mx-auto leading-tight`}>
+        {config?.title || "Effortless journey from to fully automated smart living"}
       </h2>
       
       <div className="flex flex-col lg:flex-row gap-8 lg:h-[450px]">
         {/* Left Large Image */}
         <div className="w-full lg:w-1/3 relative h-[400px] lg:h-full rounded-3xl overflow-hidden bg-[#e6ebf5]">
           <Image
-            src="https://images.unsplash.com/photo-1546435770-a3e426fa47ce?w=800&q=80" // Note: Reusing image for placeholder, but would be man with headphones
+            src="https://images.unsplash.com/photo-1546435770-a3e426fa47ce?w=800&q=80"
             alt="Man wearing headphones"
             fill
+            sizes="(max-width: 768px) 100vw, 33vw"
             className="object-cover"
           />
         </div>
@@ -56,6 +61,7 @@ export default function AutomatedLivingSection() {
                 src="https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?w=600&q=80"
                 alt="Hands with earbuds"
                 fill
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover"
               />
             </div>
@@ -64,10 +70,10 @@ export default function AutomatedLivingSection() {
           {/* Bottom CTA */}
           <div className="flex flex-col sm:flex-row items-center justify-between mt-8 pt-8 border-t border-gray-100">
             <p className="text-sm text-gray-500 max-w-sm mb-6 sm:mb-0">
-              Discover the perfect balance of deep bass, clear minds and crisp
+              {config?.subtitle || "Discover the perfect balance of deep bass, clear minds and crisp"}
             </p>
             <button className="flex items-center space-x-3 text-sm font-semibold text-gray-900 group">
-              <span className="bg-white px-6 py-3 rounded-full hover:bg-gray-50 transition-colors shadow-sm border border-gray-100">See More</span>
+              <span className="bg-white px-6 py-3 rounded-full hover:bg-gray-50 transition-colors shadow-sm border border-gray-100">{config?.buttonText || "See More"}</span>
               <div className="w-12 h-12 rounded-full bg-brand-accent flex items-center justify-center group-hover:bg-brand-accent-hover transition-colors shadow-sm">
                 <ArrowUpRight className="w-5 h-5 text-brand-dark" />
               </div>
