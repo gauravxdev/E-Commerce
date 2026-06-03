@@ -16,9 +16,9 @@ export type SectionConfig = {
 
 export const defaultSections: SectionConfig[] = [
   { id: "HeroSection", name: "Hero Section", visible: true, order: 1 },
+  { id: "DiscountBannerSection", name: "Discount Banner", visible: true, order: 1.5, title: "Super discount for your first purchase", subtitle: "Use discount code in checkout page.", buttonText: "SHOPLIVE50" },
   { id: "PopularProductsSection", name: "Popular Products", visible: true, order: 2 },
   { id: "OurProductsSection", name: "Featured Gadgets", visible: true, order: 3 },
-  { id: "ApexOpticalSection", name: "Apex Optical Highlight", visible: true, order: 4 },
   { id: "FeaturesGridSection", name: "Features Grid", visible: true, order: 5 },
   { id: "AutomatedLivingSection", name: "Automated Living", visible: true, order: 6 },
   { id: "SmartBluetoothSection", name: "Smart Bluetooth", visible: true, order: 7 },
@@ -35,7 +35,7 @@ type SiteSettings = {
 };
 
 const defaultSettings: Omit<SiteSettings, 'updateSettings' | 'updateSection'> = {
-  version: 2,
+  version: 4,
   siteName: "Snopex",
   primaryColor: "#d9f95f", // brand-accent
   baseFontSize: "16px",
@@ -53,7 +53,7 @@ export function SiteSettingsProvider({ children }: { children: React.ReactNode }
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        if (parsed.version === 2) {
+        if (parsed.version === 4) {
           setSettings(parsed);
         } else {
           // Version mismatch: reset to clear bad defaults from previous version

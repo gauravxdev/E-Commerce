@@ -20,7 +20,7 @@ export default function SearchPage() {
       <Navbar />
       
       {/* Page Header spacing for Navbar */}
-      <div className="pt-24 md:pt-32 pb-8 bg-gray-50 border-b border-gray-100">
+      <div className="pt-6 md:pt-8 pb-4 bg-gray-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 w-full flex flex-col sm:flex-row items-start sm:items-center justify-between">
           <div>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Search Results</h1>

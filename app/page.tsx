@@ -1,9 +1,10 @@
-"use client"
+"use client";
+
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
+import DiscountBannerSection from '@/components/DiscountBannerSection';
 import PopularProductsSection from '@/components/PopularProductsSection';
 import OurProductsSection from '@/components/OurProductsSection';
-import ApexOpticalSection from '@/components/ApexOpticalSection';
 import FeaturesGridSection from '@/components/FeaturesGridSection';
 import AutomatedLivingSection from '@/components/AutomatedLivingSection';
 import SmartBluetoothSection from '@/components/SmartBluetoothSection';
@@ -12,9 +13,9 @@ import { useSiteSettings } from '@/components/site-settings-provider';
 
 const sectionComponents: Record<string, any> = {
   HeroSection,
+  DiscountBannerSection,
   PopularProductsSection,
   OurProductsSection,
-  ApexOpticalSection,
   FeaturesGridSection,
   AutomatedLivingSection,
   SmartBluetoothSection,

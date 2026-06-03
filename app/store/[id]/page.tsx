@@ -30,7 +30,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
       <Navbar />
       
       {/* Page Header spacing for Navbar */}
-      <div className="pt-24 md:pt-32 pb-8 bg-gray-50 border-b border-gray-100">
+      <div className="pt-6 md:pt-8 pb-4 bg-gray-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 w-full flex flex-col sm:flex-row items-start sm:items-center justify-between">
           <div>
             <Link href="/store" className="inline-flex items-center text-sm text-brand-dark hover:text-brand-accent-hover font-semibold transition-colors mb-2">

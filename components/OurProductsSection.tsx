@@ -125,7 +125,7 @@ export default function OurProductsSection({ config }: { config?: SectionConfig 
   const textColor = config?.textColor || "text-gray-900";
 
   return (
-    <section className={`w-full max-w-7xl mx-auto px-6 py-16 flex flex-col items-center border-t border-gray-100 ${bgColor}`}>
+    <section className={`w-full max-w-7xl mx-auto px-6 pt-4 pb-16 flex flex-col items-center border-t border-gray-100 ${bgColor}`}>
       <h2 className={`text-4xl md:text-5xl font-bold ${textColor} mb-16 text-center max-w-md leading-tight`}>
         {config?.title || "Our Product"}
       </h2>

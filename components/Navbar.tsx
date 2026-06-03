@@ -41,7 +41,7 @@ export default function Navbar() {
       >
         <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-semibold text-gray-900 tracking-tight hover:text-brand-accent-hover transition-colors">Home</Link>
         <Link href="/features" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-semibold text-gray-900 tracking-tight hover:text-brand-accent-hover transition-colors">Features</Link>
-        <Link href="/solutions" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-semibold text-gray-900 tracking-tight hover:text-brand-accent-hover transition-colors">Solutions</Link>
+        <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-semibold text-gray-900 tracking-tight hover:text-brand-accent-hover transition-colors">Contact Us</Link>
         <Link href="/brands" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-semibold text-gray-900 tracking-tight hover:text-brand-accent-hover transition-colors">Brands</Link>
         <Link href="/store" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-semibold text-gray-900 tracking-tight hover:text-brand-accent-hover transition-colors">Stores</Link>
         
@@ -53,10 +53,8 @@ export default function Navbar() {
         </div>
       </div>
 
-      <nav className={`fixed z-50 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] left-1/2 -translate-x-1/2 ${
-        isScrolled 
-          ? "top-6 w-[95%] md:w-[85%] rounded-full bg-white/70 backdrop-blur-[40px] shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-saturate-150 py-3 px-6 md:px-8" 
-          : "top-0 w-full bg-transparent py-4 px-6 md:px-12"
+      <nav className={`sticky top-0 z-50 transition-all duration-300 w-full bg-white py-4 px-6 md:px-12 border-b border-gray-100 ${
+        isScrolled ? "shadow-md" : ""
       }`}>
         <div className="flex items-center justify-between w-full h-full relative z-10">
           {/* Logo */}
@@ -70,7 +68,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center space-x-8 text-sm font-medium text-gray-700">
             <Link href="/" className="hover:text-black transition-colors">Home</Link>
             <Link href="/features" className="hover:text-black transition-colors">Features</Link>
-            <Link href="/solutions" className="hover:text-black transition-colors">Solutions</Link>
+            <Link href="/contact" className="hover:text-black transition-colors">Contact Us</Link>
             <Link href="/brands" className="hover:text-black transition-colors">Brands</Link>
             <Link href="/store" className="hover:text-black transition-colors">Stores</Link>
           </div>
